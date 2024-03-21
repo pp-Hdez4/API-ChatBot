@@ -1,0 +1,16 @@
+{
+    "intents": [
+        {
+            "tag": "Saludo",
+            "patterns": ["hola", "Hola", "que tal", "saludos"],
+            "responses": ["Hola!", "Que tal", "Saludos"]
+        },
+        {
+            "tag": "nombre",
+            "patterns": ["como te llamas", "como es tu nombre", "que nombre tienes"],
+            "responses":  ["Me llamo CADS-Bot", " Mi nombre es CADS-Bot y estoy para ayudarte! ¿Que dudas tienes?", "Soy CADS-Bot, ¿En que puedo ayudate el dia de hoy?"]
+
+        }
+        
+    ]
+}

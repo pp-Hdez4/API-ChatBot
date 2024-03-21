@@ -1,0 +1,52 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'core/chatStyle.css' %}" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+</head>
+<title>Chat</title>
+
+<body>
+
+    <h1>CADS Bot</h1>
+    
+    <div>
+        <div id="chatbot">
+            <p class="botText"><span>Hola</span></p>
+        </div>
+
+        <div id="userInput">
+            <input type="text" id="textInput" name="userMessage" placeholder="Escribe tu pregunta"/>
+            <input type="submit" value="Enviar" id="buttonInput" />
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        function getUserResponse() {
+            var userText = $('#textInput').val();
+            var userHTML = "<p class='userText'>User: <span>" + userText + "</span></p>";
+            $('#textInput').val("");
+    
+            $('#chatbot').append(userHTML);
+    
+            $.get('/getResponse', {userMessage: userText}).done(function (data) {
+                var returnedMessage = "<p class='botText'>Chatbot: <span>" + data.botResponse + "</span></p>";
+                $('#chatbot').append(returnedMessage);
+            });
+        }
+    
+        $('#buttonInput').click(function () {            getUserResponse();
+        });
+    </script>
+    
+
+</body>
